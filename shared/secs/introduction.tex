@@ -1,0 +1,15 @@
+\section{Introduction}
+
+Large language models can reason, plan, and call tools, enabling agents to tackle long-horizon tasks in software engineering, data analysis, and scientific discovery. Recursive self-improvement (RSI) aims to improve agents through repeated interaction with their environments and feedback on their performance. From past execution traces, agents can derive lessons and iteratively refine their prompts, workflow memories, reusable skills, or model state.
+
+Studying and deploying RSI at scale presents challenges at two levels. The first is experiment organization. Existing RSI methods use different implementations, task formats, and evaluation procedures. Developers often have to rebuild training and evaluation pipelines when trying a new method or transferring one to a new setting. Comparisons across studies are also difficult because the underlying harnesses, environmental constraints, and scoring criteria vary. A single method can perform very differently across benchmarks, which makes evaluation under a common protocol particularly important.
+
+The second challenge is the execution harness. Large, hard-coded prompts and tightly coupled tool definitions make it difficult for an agent to update its behavior through small, structured edits. Repeated evaluation also incurs substantial costs. An RSI experiment may involve many rounds of refinement and hundreds or thousands of tool calls. Skill instructions and long tool outputs can cause the context to grow, while changes to configuration, context compaction, and session resumption can invalidate cached request prefixes.
+
+We introduce \fwname, a unified framework for agent self-improvement and evaluation. It decouples the RSI method, the benchmark, and the execution engine, allowing each to be replaced while retaining a record of the evolution process. At the experiment level, the framework packages RSI methods as modular skills and lets an agent orchestrate evaluation and improvement. At the execution level, it exposes agent state as editable files, loads context on demand, and preserves request prefixes across stages of a session.
+
+Our contributions are as follows.
+\begin{itemize}
+  \item \textbf{A unified RSI experiment framework.} \fwname packages nine representative RSI methods as modular skills and decouples them from seventeen containerized benchmarks. An agent orchestrates the loop from baseline evaluation and failure analysis through state updates and rollback. Methods can be compared across benchmarks under a shared protocol without rewriting external training code.
+  \item \textbf{An efficient general-purpose harness for RSI.} A minimal file-centric design lets agents refine their behavior through local file edits. On-demand context loading and lifecycle-aware prompt caching reduce the cost of repeated execution and evaluation. Across the reported long-horizon evaluations, prompt-cache hit rates range from above 97\% to above 99\%.
+\end{itemize}

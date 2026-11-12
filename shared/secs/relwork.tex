@@ -1,0 +1,11 @@
+\section{Related Work}
+
+\subsection{Agent Self-Improvement Methods and Benchmarks}
+
+Previous work on self-improvement in language models and agents has explored several approaches. Early work focused on discrete prompt search and optimization. APE generates and screens candidate instructions \citep{zhou2023ape}. OPRO conditions an optimizer on previous instructions and their scores to propose improved prompts \citep{yang2024opro}. Trace treats execution traces as generalized computational graphs and optimizes them using feedback expressed in text \citep{cheng2024trace}. For multistep tasks, ACE maintains a structured playbook through generation, reflection, and curation, while AWM distills reusable routines from execution traces \citep{wang2024awm}. More recent work explores the automatic synthesis and evolution of modular skills, including SkillAdam, SkillOpt, and OpenSkill.
+
+Benchmarks such as SWE-bench and Terminal-Bench evaluate agents on software engineering and terminal tasks, respectively. Other benchmarks address scientific computing and retrieval-augmented tasks. Platforms such as FlashRSI aim to accelerate the improvement process. RSI methods and benchmarks are often developed independently, with method implementations coupled to dataset-specific evaluation code. \fwname brings multiple RSI methods and standardized containerized benchmarks together under a common execution and evaluation protocol.
+
+\subsection{General-Purpose Agent Harnesses and Frameworks}
+
+Workflow frameworks such as LangGraph provide explicit control over state graphs and execution. Agent harnesses such as Claude Code, OpenAI Codex, OpenCode, DeepSeek Harness (dsh), and Pi provide interactive agents for software engineering and general tasks. Repeated RSI experiments place additional demands on these systems. Large built-in prompts and tool definitions make small, targeted changes to agent behavior harder. Long tool outputs, session compaction, resumption, and dynamic instruction changes can increase context size or disrupt reuse of cached prefixes. \fwname addresses these concerns with a file-centric state representation and context management designed for repeated agent refinement.

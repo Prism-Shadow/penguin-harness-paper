@@ -1,0 +1,27 @@
+# Build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.bcf
+*.run.xml
+/arxiv/main.pdf
+/icml/main.pdf
+
+# Keep one compiled preprint for readers
+/output/*
+!/output/penguinharness-arxiv.pdf
+
+# Packaged submission archives
+dist/
+.DS_Store

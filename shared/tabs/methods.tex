@@ -1,0 +1,21 @@
+\begin{table*}[t]
+  \centering
+  \small
+  \caption{The nine built-in modular RSI methods in \fwname.}
+  \label{tab:methods}
+  \begin{tabular}{@{}p{.10\textwidth}p{.17\textwidth}p{.37\textwidth}p{.25\textwidth}@{}}
+    \toprule
+    \textbf{Method} & \textbf{Category} & \textbf{Self-improvement mechanism} & \textbf{Updated artifact} \\
+    \midrule
+    Default & Reflection loop & Evaluate, diagnose failures in traces, edit the state, and validate snapshots. & Agent instructions and domain skills \\
+    APE & Discrete prompt optimization & Propose candidate instructions from task examples and retain the best after evaluation. & Selected task instructions \\
+    OPRO & Discrete prompt optimization & Condition the optimizer on past instructions and scores to propose new instructions. & Improved task instructions and score history \\
+    ACE & Workflow and experience evolution & Reflect on training traces and incrementally curate a structured playbook. & Structured playbook \\
+    AWM & Workflow and experience evolution & Distill reusable routines from successful traces and freeze them for held-out testing. & Reusable workflow memory \\
+    OpenSkill & Modular skill evolution & Retrieve domain knowledge and refine a reusable skill library through virtual trials. & Refined domain skill library \\
+    SkillAdam & Modular skill evolution & Use trace feedback, a dynamic issue tracker, and a budgeted paired evaluation to evolve skills. & Evolved skills and issue history \\
+    SkillOpt & Modular skill evolution & Use bounded edits, candidate evaluation, and reflection across rounds. & Locally revised skill modules \\
+    TRACE & Contrastive trace and skill evolution & Learn from contrasting traces during continuous containerized training and test the best training checkpoint. & Skill checkpoint derived from contrasting traces \\
+    \bottomrule
+  \end{tabular}
+\end{table*}

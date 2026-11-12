@@ -1,0 +1,43 @@
+\pdfoutput=1
+% Preserve embedded figure fonts before the template loads PGF/TikZ.
+\ifdefined\pdfinclusioncopyfonts
+  \pdfinclusioncopyfonts=1
+\fi
+\documentclass{prismshadow}
+\usepackage[T1]{fontenc}
+\input{package}
+\usepackage{xspace}
+
+\input{macros}
+\renewcommand{\fwname}{PenguinHarness\xspace}
+
+\title{\fwname: Unified Efficient Recursive Self-Improvement of Agents}
+% Leave room below the abstract for the title-box logo.
+\abstract{\input{secs/abstract.tex}\par\vspace{0.55cm}}
+
+\begin{document}
+\maketitle
+\clearpage
+
+\begingroup
+\small
+\renewcommand{\baselinestretch}{1}\selectfont
+\setlength{\parskip}{0pt}
+\tableofcontents
+\endgroup
+\clearpage
+
+\input{secs/introduction}
+\input{secs/relwork}
+\input{secs/organization}
+\input{secs/architecture}
+\input{secs/experiment}
+\input{secs/conclusion}
+
+\clearpage
+\bibliographystyle{unsrtnat}
+\bibliography{main}
+
+\clearpage
+\input{secs/appendices}
+\end{document}

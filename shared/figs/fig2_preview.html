@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Figure 2 & Figure 3 Preview — Plan A vs Plan B</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #eef2f6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    color: #1e293b;
+    padding: 20px 24px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .toolbar {
+    width: 1380px;
+    max-width: 98vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 12px 20px;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    position: sticky;
+    top: 12px;
+    z-index: 10;
+  }
+
+  .toolbar-title {
+    font-size: 15.5px;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .toolbar-badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: #f0f5fa;
+    color: #234e70;
+    border: 1px solid #b8cde0;
+  }
+
+  .toolbar-actions { display: flex; gap: 8px; }
+
+  .btn {
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    color: #334155;
+    transition: all 0.15s ease;
+  }
+  .btn:hover { background: #e2e8f0; }
+  .btn.active {
+    background: #234e70;
+    color: #ffffff;
+    border-color: #234e70;
+  }
+
+  .plan-section {
+    width: 1380px;
+    max-width: 98vw;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .plan-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 6px;
+  }
+
+  .plan-tag {
+    font-size: 13px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 6px;
+    color: #ffffff;
+    background: #234e70;
+  }
+
+  .plan-tag.plan-b {
+    background: #28665a;
+  }
+
+  .plan-desc {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .figure-frame {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 18px 20px 16px;
+    box-shadow: 0 6px 24px rgba(15, 23, 42, 0.05);
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+
+  .caption-box {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1.5px solid #e2e8f0;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #334155;
+  }
+  .caption-box strong { color: #0f172a; }
+
+  body[data-lang="zh"] .lang-en { display: none; }
+  body[data-lang="en"] .lang-zh { display: none; }
+</style>
+</head>
+<body data-lang="en">
+
+<div class="toolbar">
+  <div class="toolbar-title">
+    <span>PenguinHarness — Section 4 Figures Preview (Plan A vs Plan B)</span>
+    <span class="toolbar-badge">Morandi Academic Palette · Icon-Driven</span>
+  </div>
+</div>
+
+<!-- =========================================================================== -->
+<!-- PLAN A: SINGLE UNIFIED FIGURE 2 COVERING BOTH 4.1 AND 4.2                   -->
+<!-- =========================================================================== -->
+<div class="plan-section" id="plan-a-box">
+  <div class="plan-header">
+    <span class="plan-tag">Plan A</span>
+    <span class="plan-desc">Plan A: Single Unified Figure 2 Covering All of Section 4: File-Centric State, On-Demand Context, and Lifecycle Cache Preservation</span>
+  </div>
+
+  <div class="figure-frame" id="capture-plan-a">
+    <svg viewBox="0 0 1340 415" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="a-arr-dark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M 0 1.2 L 8.5 5 L 0 8.8 z" fill="#334155"/>
+        </marker>
+        <marker id="a-arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M 0 1.2 L 8.5 5 L 0 8.8 z" fill="#234e70"/>
+        </marker>
+        <marker id="a-arr-sage" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M 0 1.2 L 8.5 5 L 0 8.8 z" fill="#28665a"/>
+        </marker>
+        <marker id="a-arr-ochre" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M 0 1.2 L 8.5 5 L 0 8.8 z" fill="#b85d2e"/>
+        </marker>
+
+        <filter id="sh-a" x="-4%" y="-4%" width="108%" height="112%">
+          <feDropShadow dx="0" dy="2" stdDeviation="2.2" flood-color="#0f172a" flood-opacity="0.05"/>
+        </filter>
+
+        <!-- File icon -->
+        <g id="ico-doc-ochre">
+          <path d="M -12 -16 L 5 -16 L 12 -9 L 12 16 L -12 16 Z" fill="#ffffff" stroke="#b85d2e" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M 5 -16 L 5 -9 L 12 -9" fill="none" stroke="#b85d2e" stroke-width="2" stroke-linejoin="round"/>
+          <line x1="-7" y1="-3" x2="7" y2="-3" stroke="#d47a49" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="-7" y1="3" x2="7" y2="3" stroke="#d47a49" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="-7" y1="9" x2="2" y2="9" stroke="#d47a49" stroke-width="1.8" stroke-linecap="round"/>
+        </g>
+
+        <g id="ico-folder-ochre">
+          <path d="M -16 -12 L -5 -12 L -2 -8 L 16 -8 L 16 13 L -16 13 Z" fill="#f5e3d3" stroke="#b85d2e" stroke-width="2" stroke-linejoin="round"/>
+        </g>
+
+        <g id="ico-hook">
+          <circle cx="0" cy="0" r="14" fill="#fdf6f0" stroke="#b85d2e" stroke-width="2"/>
+          <path d="M -4 -5 L 5 0 L -4 5 Z" fill="#b85d2e"/>
+        </g>
+
+        <g id="ico-disk">
+          <ellipse cx="0" cy="-9" rx="14" ry="5" fill="#dceaf7" stroke="#234e70" stroke-width="2"/>
+          <path d="M -14 -9 L -14 9 A 14 5 0 0 0 14 9 L 14 -9" fill="#dceaf7" stroke="#234e70" stroke-width="2"/>
+          <path d="M -14 0 A 14 5 0 0 0 14 0" fill="none" stroke="#234e70" stroke-width="2"/>
+        </g>
+
+        <g id="ico-lock-sage">
+          <path d="M -6 -3 L -6 -8 A 6 6 0 0 1 6 -8 L 6 -3" fill="none" stroke="#28665a" stroke-width="2.2" stroke-linecap="round"/>
+          <rect x="-10" y="-3" width="20" height="15" rx="3.5" fill="#28665a"/>
+          <circle cx="0" cy="4.5" r="2" fill="#ffffff"/>
+        </g>
+      </defs>
+
+      <!-- ===================================================================== -->
+      <!-- 3 MACRO COLUMNS FOR PLAN A                                            -->
+      <!-- ===================================================================== -->
+
+      <!-- COL 1: 4.1 Minimalist File-Centric State (x=10, w=250) -->
+      <rect x="10" y="10" width="250" height="394" rx="12" fill="#faf5f0" stroke="#d9b89c" stroke-width="1.6"/>
+      <path d="M 10 22 Q 10 10 22 10 L 248 10 Q 260 10 260 22 L 260 48 L 10 48 Z" fill="#b85d2e"/>
+      <text x="135" y="35" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff">
+        1. FILE-CENTRIC STATE
+      </text>
+
+      <!-- COL 2: 4.2(1) On-Demand Context Control (x=280, w=630) -->
+      <rect x="280" y="10" width="630" height="394" rx="12" fill="#f3f7fb" stroke="#b0c7de" stroke-width="1.6"/>
+      <path d="M 280 22 Q 280 10 292 10 L 898 10 Q 910 10 910 22 L 910 48 L 280 48 Z" fill="#234e70"/>
+      <text x="595" y="35" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff">
+        2. MINIMAL TOOLS &amp; ON-DEMAND CONTEXT
+      </text>
+
+      <!-- COL 3: 4.2(2) Lifecycle Prompt-Cache Preservation (x=930, w=400) -->
+      <rect x="930" y="10" width="400" height="394" rx="12" fill="#f1f7f5" stroke="#a3cbc2" stroke-width="1.6"/>
+      <path d="M 930 22 Q 930 10 942 10 L 1318 10 Q 1330 10 1330 22 L 1330 48 L 930 48 Z" fill="#28665a"/>
+      <text x="1130" y="35" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff">
+        3. LIFECYCLE CACHE PRESERVATION
+      </text>
+
+
+      <!-- ===================================================================== -->
+      <!-- COL 1 CONTENT: State-as-Files + Disk Archive & Trace                  -->
+      <!-- ===================================================================== -->
+
+      <!-- Card 1A: State-as-Files -->
+      <rect x="26" y="66" width="218" height="166" rx="10" fill="#ffffff" stroke="#cfa07e" stroke-width="1.8" filter="url(#sh-a)"/>
+      <text x="135" y="94" text-anchor="middle" font-size="15" font-weight="800" fill="#853d16">State as Files</text>
+
+      <g transform="translate(62, 138)">
+        <use href="#ico-doc-ochre"/>
+        <text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">AGENTS.md</text>
+      </g>
+      <g transform="translate(135, 138)">
+        <use href="#ico-folder-ochre"/>
+        <text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">skills/</text>
+      </g>
+      <g transform="translate(204, 138)">
+        <use href="#ico-hook"/>
+        <text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">hooks/</text>
+      </g>
+
+      <rect x="40" y="184" width="190" height="34" rx="7" fill="#faeee3" stroke="#dfb89b" stroke-width="1.2"/>
+      <text x="135" y="206" text-anchor="middle" font-size="12" font-weight="800" fill="#853d16">
+        Fast Local File Evolution
+      </text>
+
+      <!-- Card 1B: Disk Offload & Session Traces -->
+      <rect x="26" y="248" width="218" height="138" rx="10" fill="#ffffff" stroke="#8fb0cc" stroke-width="1.8" filter="url(#sh-a)"/>
+      <text x="135" y="276" text-anchor="middle" font-size="15" font-weight="800" fill="#183852">Disk Logs &amp; Traces</text>
+
+      <g transform="translate(88, 314)">
+        <use href="#ico-disk"/>
+        <text x="0" y="28" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">Full Logs</text>
+      </g>
+      <g transform="translate(182, 314)">
+        <use href="#ico-doc-ochre"/>
+        <text x="0" y="28" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">traces/</text>
+      </g>
+
+      <rect x="40" y="348" width="190" height="28" rx="6" fill="#ebf2f9" stroke="#b8cde0" stroke-width="1"/>
+      <text x="135" y="366" text-anchor="middle" font-size="11.5" font-weight="700" fill="#234e70">
+        On-Demand Read &amp; Replay
+      </text>
+
+
+      <!-- ===================================================================== -->
+      <!-- COL 2 CONTENT: Top Locked Prefix Bar + 3 On-Demand Context Cards      -->
+      <!-- ===================================================================== -->
+
+      <!-- Top Bar: Locked Minimal Prefix -->
+      <rect x="298" y="66" width="594" height="54" rx="10" fill="#dceaf7" stroke="#3b6990" stroke-width="1.8" filter="url(#sh-a)"/>
+      <use href="#ico-lock-sage" x="318" y="93"/>
+      <text x="606" y="99" text-anchor="middle" font-size="14" font-weight="800" fill="#183852">
+        Locked Prefix: Short System Prompt + 7 Primitive Tools + 1-Line Skill Index
+      </text>
+
+      <!-- 3 Cards inside Col 2 (y=148, w=186, h=194, gap=18)
+           Card 2.1: x=298
+           Card 2.2: x=502
+           Card 2.3: x=706
+      -->
+      <line x1="391" y1="120" x2="391" y2="142" stroke="#234e70" stroke-width="1.8" marker-end="url(#a-arr-blue)"/>
+      <line x1="595" y1="120" x2="595" y2="142" stroke="#234e70" stroke-width="1.8" marker-end="url(#a-arr-blue)"/>
+      <line x1="799" y1="120" x2="799" y2="142" stroke="#234e70" stroke-width="1.8" marker-end="url(#a-arr-blue)"/>
+
+      <!-- Card 2.1: 1-Line Skill Index (43.9x smaller) -->
+      <rect x="298" y="148" width="186" height="194" rx="10" fill="#ffffff" stroke="#8fb0cc" stroke-width="1.8" filter="url(#sh-a)"/>
+      <text x="391" y="178" text-anchor="middle" font-size="15" font-weight="800" fill="#1e4566">1-Line Skill Index</text>
+
+      <!-- Visual Bar Comparison: 125K vs 2.8K -->
+      <g transform="translate(328, 198)">
+        <rect x="0" y="0" width="126" height="22" rx="4" fill="#faeaec" stroke="#cfa0a6" stroke-width="1.2"/>
+        <text x="63" y="15" text-anchor="middle" font-size="11" font-weight="700" fill="#8c2d39">Full Body 125K</text>
+
+        <rect x="0" y="32" width="38" height="24" rx="4" fill="#dceee9" stroke="#28665a" stroke-width="1.6"/>
+        <text x="82" y="48" text-anchor="middle" font-size="12" font-weight="800" fill="#20544a">Index 2.8K</text>
+      </g>
+
+      <rect x="312" y="286" width="158" height="40" rx="7" fill="#e3effa" stroke="#a6c3de" stroke-width="1.2"/>
+      <text x="391" y="304" text-anchor="middle" font-size="13" font-weight="800" fill="#183852">43.9× Smaller</text>
+      <text x="391" y="320" text-anchor="middle" font-size="11" font-weight="600" fill="#2c5c85">Minimal Init Overhead</text>
+
+      <!-- Card 2.2: On-Demand Skill Fetch -->
+      <rect x="502" y="148" width="186" height="194" rx="10" fill="#fffcf9" stroke="#cfa07e" stroke-width="1.8" filter="url(#sh-a)"/>
+      <text x="595" y="178" text-anchor="middle" font-size="15" font-weight="800" fill="#9c4a1f">On-Demand Fetch</text>
+
+      <!-- Magnifier + SKILL.md icon -->
+      <g transform="translate(595, 232)">
+        <use href="#ico-folder-ochre" transform="translate(-26, 0) scale(1.15)"/>
+        <path d="M -4 0 L 14 0" stroke="#b85d2e" stroke-width="2.2" marker-end="url(#a-arr-ochre)"/>
+        <use href="#ico-doc-ochre" transform="translate(30, 0) scale(1.1)"/>
+      </g>
+
+      <rect x="516" y="286" width="158" height="40" rx="7" fill="#faeee3" stroke="#dfb89b" stroke-width="1.2"/>
+      <text x="595" y="304" text-anchor="middle" font-size="12.5" font-weight="800" fill="#853d16">read_file</text>
+      <text x="595" y="320" text-anchor="middle" font-size="11" font-weight="600" fill="#a85528">Loads Body When Needed</text>
+
+      <!-- Card 2.3: 16K Tool Output Cap & Disk Offload -->
+      <rect x="706" y="148" width="186" height="194" rx="10" fill="#fafdfc" stroke="#94bfb5" stroke-width="1.8" filter="url(#sh-a)"/>
+      <text x="799" y="178" text-anchor="middle" font-size="15" font-weight="800" fill="#20544a">16K Output Cap</text>
+
+      <!-- Visual Head/Tail Window Icon -->
+      <g transform="translate(736, 198)">
+        <rect x="0" y="0" width="126" height="18" rx="3" fill="#dceee9" stroke="#28665a" stroke-width="1.2"/>
+        <text x="63" y="13" text-anchor="middle" font-size="10" font-weight="700" fill="#20544a">Head Window Kept</text>
+
+        <rect x="0" y="21" width="126" height="18" rx="3" fill="#faeaec" stroke="#cfa0a6" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="63" y="34" text-anchor="middle" font-size="10" font-weight="700" fill="#8c2d39">Offloaded to Disk</text>
+
+        <rect x="0" y="42" width="126" height="18" rx="3" fill="#dceee9" stroke="#28665a" stroke-width="1.2"/>
+        <text x="63" y="55" text-anchor="middle" font-size="10" font-weight="700" fill="#20544a">Tail &amp; Exit Code</text>
+      </g>
+
+      <rect x="720" y="286" width="158" height="40" rx="7" fill="#e4f2ee" stroke="#a3cbc2" stroke-width="1.2"/>
+      <text x="799" y="304" text-anchor="middle" font-size="13" font-weight="800" fill="#20544a">3.91× Smaller</text>
+      <text x="799" y="320" text-anchor="middle" font-size="11" font-weight="600" fill="#28665a">Delays Lossy Compaction</text>
+
+      <!-- Bottom summary bar inside Col 2 -->
+      <rect x="298" y="354" width="594" height="32" rx="8" fill="#dceaf7" stroke="#9ab8d4" stroke-width="1.2"/>
+      <text x="595" y="375" text-anchor="middle" font-size="12.5" font-weight="800" fill="#183852">
+        Portable Across 1,000+ Cloud and Local Foundation Models
+      </text>
+
+
+      <!-- ===================================================================== -->
+      <!-- COL 3 CONTENT: 3 Lifecycle Cache Guards + 99.1% Hit Rate              -->
+      <!-- ===================================================================== -->
+
+      <!-- Guard 1: Defer State Edits until Compaction -->
+      <rect x="948" y="66" width="364" height="72" rx="10" fill="#ffffff" stroke="#8ebdb2" stroke-width="1.8" filter="url(#sh-a)"/>
+      <circle cx="980" cy="102" r="18" fill="#e4f2ee" stroke="#28665a" stroke-width="1.8"/>
+      <text x="980" y="108" text-anchor="middle" font-size="15" font-weight="900" fill="#20544a">1</text>
+      <text x="1012" y="96" font-size="14.5" font-weight="800" fill="#1e293b">Defer Edits Until Compaction</text>
+      <text x="1012" y="118" font-size="11.5" font-weight="600" fill="#28665a">Locks active prefix · No mid-run cache reset</text>
+
+      <!-- Guard 2: Same-Config Compaction (10.2x cheaper) -->
+      <rect x="948" y="150" width="364" height="72" rx="10" fill="#ffffff" stroke="#8ebdb2" stroke-width="1.8" filter="url(#sh-a)"/>
+      <circle cx="980" cy="186" r="18" fill="#e4f2ee" stroke="#28665a" stroke-width="1.8"/>
+      <text x="980" y="192" text-anchor="middle" font-size="15" font-weight="900" fill="#20544a">2</text>
+      <text x="1012" y="180" font-size="14.5" font-weight="800" fill="#1e293b">Same-Config Compaction</text>
+      <text x="1012" y="202" font-size="11.5" font-weight="600" fill="#28665a">Reuses tool &amp; thinking prefix · 10.2× cheaper</text>
+
+      <!-- Guard 3: Byte-Identical Resume & Reconnect -->
+      <rect x="948" y="234" width="364" height="72" rx="10" fill="#ffffff" stroke="#8ebdb2" stroke-width="1.8" filter="url(#sh-a)"/>
+      <circle cx="980" cy="270" r="18" fill="#e4f2ee" stroke="#28665a" stroke-width="1.8"/>
+      <text x="980" y="276" text-anchor="middle" font-size="15" font-weight="900" fill="#20544a">3</text>
+      <text x="1012" y="264" font-size="14.5" font-weight="800" fill="#1e293b">Byte-Identical Trace Replay</text>
+      <text x="1012" y="286" font-size="11.5" font-weight="600" fill="#28665a">Preserves signatures &amp; tool order · 100% hit</text>
+
+      <!-- Bottom Verification & 99.1% Hit Banner -->
+      <rect x="948" y="318" width="364" height="68" rx="10" fill="#dceee9" stroke="#28665a" stroke-width="1.8" filter="url(#sh-a)"/>
+      <text x="1130" y="344" text-anchor="middle" font-size="14.5" font-weight="800" fill="#20544a">
+        Verified Across 33 Lifecycle Scenarios in CI
+      </text>
+      <text x="1130" y="368" text-anchor="middle" font-size="13" font-weight="800" fill="#9c4a1f">
+        Achieves 99.10% Empirical Prompt-Cache Hit Rate
+      </text>
+
+      <!-- Connectors between Col 1 -> Col 2 -> Col 3 -->
+      <line x1="260" y1="245" x2="292" y2="245" stroke="#334155" stroke-width="2.4" marker-end="url(#a-arr-dark)"/>
+      <line x1="910" y1="245" x2="942" y2="245" stroke="#28665a" stroke-width="2.4" marker-end="url(#a-arr-sage)"/>
+    </svg>
+    <div class="caption-box">
+      <strong>Figure 2: PenguinHarness Underlying Architecture.</strong>
+      Left: File-centric agent state enabling fast local edits; Center: Minimal primitive tools, 1-line skill index, and 16K tool output cap reducing initial overhead by 43.9× and per-step growth by 3.91×; Right: Deferred state edits, same-config compaction, and byte-identical trace replay achieving a 99.10% prompt-cache hit rate.
+    </div>
+  </div>
+</div>
+
+
+<!-- =========================================================================== -->
+<!-- PLAN B: SPLIT INTO FIGURE 2 (Sec 4.1) AND FIGURE 3 (Sec 4.2)                -->
+<!-- =========================================================================== -->
+<div class="plan-section" id="plan-b-box">
+  <div class="plan-header">
+    <span class="plan-tag plan-b">Plan B</span>
+    <span class="plan-desc">Plan B: Split into Two Figures — Figure 2 for Minimalist File-Centric Architecture and Figure 3 for Context &amp; Cache Preservation</span>
+  </div>
+
+  <!-- PLAN B - FIGURE 2 (Sec 4.1) -->
+  <div class="figure-frame" id="capture-plan-b-fig2">
+    <svg viewBox="0 0 1340 340" xmlns="http://www.w3.org/2000/svg">
+      <!-- Left Panel: Heavyweight Harness (Muted Rose #9e3a47, x=10, w=500) -->
+      <rect x="10" y="10" width="500" height="320" rx="12" fill="#fcf3f4" stroke="#cfa0a6" stroke-width="1.6"/>
+      <path d="M 10 22 Q 10 10 22 10 L 498 10 Q 510 10 510 22 L 510 48 L 10 48 Z" fill="#9e3a47"/>
+      <text x="260" y="35" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff">
+        1. HEAVYWEIGHT HARNESS
+      </text>
+
+      <!-- Heavy Card 1: Monolithic Hardcoded Prompt -->
+      <rect x="28" y="66" width="222" height="244" rx="10" fill="#ffffff" stroke="#cfa0a6" stroke-width="1.8" filter="url(#sh-a)"/>
+      <text x="139" y="98" text-anchor="middle" font-size="15" font-weight="800" fill="#8c2d39">Monolithic Prompt</text>
+
+      <!-- Stack of tangled heavy files -->
+      <g transform="translate(139, 174)">
+        <rect x="-46" y="-34" width="92" height="68" rx="6" fill="#faeaec" stroke="#9e3a47" stroke-width="2"/>
+        <line x1="-32" y1="-18" x2="32" y2="-18" stroke="#9e3a47" stroke-width="2.2"/>
+        <line x1="-32" y1="-6" x2="32" y2="-6" stroke="#9e3a47" stroke-width="2.2"/>
+        <line x1="-32" y1="6" x2="32" y2="6" stroke="#9e3a47" stroke-width="2.2"/>
+        <line x1="-32" y1="18" x2="18" y2="18" stroke="#9e3a47" stroke-width="2.2"/>
+      </g>
+
+      <rect x="44" y="250" width="190" height="42" rx="7" fill="#faeaec" stroke="#dfa8b0" stroke-width="1.2"/>
+      <text x="139" y="269" text-anchor="middle" font-size="12.5" font-weight="800" fill="#7a2430">Dozens of Coupled Tools</text>
+      <text x="139" y="285" text-anchor="middle" font-size="11" font-weight="600" fill="#9e3a47">125K Tokens Always Inlined</text>
+
+      <!-- Heavy Card 2: Slow Rewrite & Conflict -->
+      <rect x="268" y="66" width="222" height="244" rx="10" fill="#ffffff" stroke="#cfa0a6" stroke-width="1.8" filter="url(#sh-a)"/>
+      <text x="379" y="98" text-anchor="middle" font-size="15" font-weight="800" fill="#8c2d39">Slow Self-Evolution</text>
+
+      <g transform="translate(379, 174)">
+        <circle cx="0" cy="0" r="28" fill="#faeaec" stroke="#9e3a47" stroke-width="2.4"/>
+        <line x1="-11" y1="-11" x2="11" y2="11" stroke="#9e3a47" stroke-width="3.2" stroke-linecap="round"/>
+        <line x1="11" y1="-11" x2="-11" y2="11" stroke="#9e3a47" stroke-width="3.2" stroke-linecap="round"/>
+      </g>
+
+      <rect x="284" y="250" width="190" height="42" rx="7" fill="#faeaec" stroke="#dfa8b0" stroke-width="1.2"/>
+      <text x="379" y="269" text-anchor="middle" font-size="12.5" font-weight="800" fill="#7a2430">Massive Rewrite Space</text>
+      <text x="379" y="285" text-anchor="middle" font-size="11" font-weight="600" fill="#9e3a47">Slow Edits &amp; Rule Conflicts</text>
+
+
+      <!-- Right Panel: PenguinHarness Minimalist File-Centric Architecture (x=540, w=790) -->
+      <rect x="540" y="10" width="790" height="320" rx="12" fill="#f3f7fb" stroke="#b0c7de" stroke-width="1.6"/>
+      <path d="M 540 22 Q 540 10 552 10 L 1318 10 Q 1330 10 1330 22 L 1330 48 L 540 48 Z" fill="#234e70"/>
+      <text x="935" y="35" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff">
+        2. PENGUINHARNESS MINIMALIST FILE-CENTRIC ARCHITECTURE
+      </text>
+
+      <!-- Card R1: State as Files -->
+      <rect x="560" y="66" width="234" height="244" rx="10" fill="#ffffff" stroke="#cfa07e" stroke-width="1.8" filter="url(#sh-a)"/>
+      <text x="677" y="98" text-anchor="middle" font-size="15" font-weight="800" fill="#853d16">State as Files</text>
+
+      <g transform="translate(604, 174)">
+        <use href="#ico-doc-ochre" transform="scale(1.1)"/>
+        <text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">AGENTS.md</text>
+      </g>
+      <g transform="translate(677, 174)">
+        <use href="#ico-folder-ochre" transform="scale(1.1)"/>
+        <text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">skills/</text>
+      </g>
+      <g transform="translate(750, 174)">
+        <use href="#ico-hook" transform="scale(1.1)"/>
+        <text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">hooks/</text>
+      </g>
+
+      <rect x="576" y="250" width="202" height="42" rx="7" fill="#faeee3" stroke="#dfb89b" stroke-width="1.2"/>
+      <text x="677" y="269" text-anchor="middle" font-size="12.5" font-weight="800" fill="#853d16">Targeted File Edits</text>
+      <text x="677" y="285" text-anchor="middle" font-size="11" font-weight="600" fill="#a85528">Fast Modular Evolution</text>
+
+      <!-- Card R2: 7 Primitive Tools & Concise Prompt -->
+      <rect x="818" y="66" width="234" height="244" rx="10" fill="#ffffff" stroke="#8fb0cc" stroke-width="1.8" filter="url(#sh-a)"/>
+      <text x="935" y="98" text-anchor="middle" font-size="15" font-weight="800" fill="#183852">7 Primitive Tools</text>
+
+      <g transform="translate(838, 132)">
+        <rect x="0" y="0" width="194" height="28" rx="6" fill="#ebf2f9" stroke="#b8cde0" stroke-width="1"/>
+        <text x="97" y="19" text-anchor="middle" font-size="12" font-weight="700" fill="#234e70">read / write / edit_file</text>
+
+        <rect x="0" y="36" width="194" height="28" rx="6" fill="#ebf2f9" stroke="#b8cde0" stroke-width="1"/>
+        <text x="97" y="55" text-anchor="middle" font-size="12" font-weight="700" fill="#234e70">exec / input_command</text>
+
+        <rect x="0" y="72" width="194" height="28" rx="6" fill="#ebf2f9" stroke="#b8cde0" stroke-width="1"/>
+        <text x="97" y="91" text-anchor="middle" font-size="12" font-weight="700" fill="#234e70">run / input_subagent</text>
+      </g>
+
+      <rect x="834" y="250" width="202" height="42" rx="7" fill="#e3effa" stroke="#a6c3de" stroke-width="1.2"/>
+      <text x="935" y="269" text-anchor="middle" font-size="12.5" font-weight="800" fill="#183852">Concise System Prompt</text>
+      <text x="935" y="285" text-anchor="middle" font-size="11" font-weight="600" fill="#2c5c85">Low-Noise Search Space</text>
+
+      <!-- Card R3: 1000+ Models & Sandbox Portability -->
+      <rect x="1076" y="66" width="234" height="244" rx="10" fill="#ffffff" stroke="#8ebdb2" stroke-width="1.8" filter="url(#sh-a)"/>
+      <text x="1193" y="98" text-anchor="middle" font-size="15" font-weight="800" fill="#20544a">1000+ Models &amp; Sandboxes</text>
+
+      <g transform="translate(1096, 132)">
+        <rect x="0" y="0" width="194" height="44" rx="6" fill="#f1f8f6" stroke="#a3cbc2" stroke-width="1.2"/>
+        <text x="97" y="27" text-anchor="middle" font-size="13" font-weight="800" fill="#20544a">1000+ Cloud &amp; Local LLMs</text>
+
+        <rect x="0" y="56" width="194" height="44" rx="6" fill="#f1f8f6" stroke="#a3cbc2" stroke-width="1.2"/>
+        <text x="97" y="83" text-anchor="middle" font-size="13" font-weight="800" fill="#20544a">Native &amp; Harbor Containers</text>
+      </g>
+
+      <rect x="1092" y="250" width="202" height="42" rx="7" fill="#e4f2ee" stroke="#a3cbc2" stroke-width="1.2"/>
+      <text x="1193" y="269" text-anchor="middle" font-size="12.5" font-weight="800" fill="#20544a">Portable Protocol Contract</text>
+      <text x="1193" y="285" text-anchor="middle" font-size="11" font-weight="600" fill="#28665a">Zero-Code Model Switching</text>
+    </svg>
+    <div class="caption-box">
+      <strong>Figure 2: Comparison Between Heavyweight Harnesses and PenguinHarness Minimalist File-Centric Architecture.</strong>
+      Heavyweight harnesses hardcode tens of thousands of prompt lines and dozens of tools; PenguinHarness externalizes all mutable state as plain files paired with 7 primitive tools, enabling fast local evolution across 1,000+ models.
+    </div>
+  </div>
+
+  <!-- PLAN B - FIGURE 3 (Sec 4.2) -->
+  <div class="figure-frame" id="capture-plan-b-fig3">
+    <svg viewBox="0 0 1340 360" xmlns="http://www.w3.org/2000/svg">
+      <!-- Left Panel: On-Demand Context Control (x=10, w=450) -->
+      <rect x="10" y="10" width="450" height="340" rx="12" fill="#faf5f0" stroke="#d9b89c" stroke-width="1.6"/>
+      <path d="M 10 22 Q 10 10 22 10 L 448 10 Q 460 10 460 22 L 460 48 L 10 48 Z" fill="#b85d2e"/>
+      <text x="235" y="35" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff">
+        1. ON-DEMAND CONTEXT CONTROL
+      </text>
+
+      <!-- Subcard 3.1: 1-Line Skill Index -->
+      <rect x="26" y="66" width="198" height="264" rx="10" fill="#ffffff" stroke="#cfa07e" stroke-width="1.8" filter="url(#sh-a)"/>
+      <text x="125" y="96" text-anchor="middle" font-size="15" font-weight="800" fill="#853d16">1-Line Skill Index</text>
+
+      <g transform="translate(44, 120)">
+        <rect x="0" y="0" width="162" height="36" rx="6" fill="#faeaec" stroke="#cfa0a6" stroke-width="1.2"/>
+        <text x="81" y="23" text-anchor="middle" font-size="12" font-weight="700" fill="#8c2d39">Full Body: 124,826 Tok</text>
+
+        <rect x="0" y="50" width="162" height="36" rx="6" fill="#dceee9" stroke="#28665a" stroke-width="1.6"/>
+        <text x="81" y="73" text-anchor="middle" font-size="12" font-weight="800" fill="#20544a">1-Line Index: 2,843 Tok</text>
+      </g>
+
+      <rect x="40" y="266" width="170" height="44" rx="7" fill="#faeee3" stroke="#dfb89b" stroke-width="1.2"/>
+      <text x="125" y="286" text-anchor="middle" font-size="13" font-weight="800" fill="#853d16">43.9× Smaller Init</text>
+      <text x="125" y="302" text-anchor="middle" font-size="11" font-weight="600" fill="#a85528">Body Loaded on Demand</text>
+
+      <!-- Subcard 3.2: 16K Tool Output Offload -->
+      <rect x="244" y="66" width="198" height="264" rx="10" fill="#ffffff" stroke="#cfa07e" stroke-width="1.8" filter="url(#sh-a)"/>
+      <text x="343" y="96" text-anchor="middle" font-size="15" font-weight="800" fill="#853d16">16K Output Offload</text>
+
+      <g transform="translate(262, 120)">
+        <rect x="0" y="0" width="162" height="36" rx="6" fill="#faeaec" stroke="#cfa0a6" stroke-width="1.2"/>
+        <text x="81" y="23" text-anchor="middle" font-size="12" font-weight="700" fill="#8c2d39">Uncapped: 16,297 Tok</text>
+
+        <rect x="0" y="50" width="162" height="36" rx="6" fill="#dceee9" stroke="#28665a" stroke-width="1.6"/>
+        <text x="81" y="73" text-anchor="middle" font-size="12" font-weight="800" fill="#20544a">16K Cap: 4,163 Tok</text>
+      </g>
+
+      <rect x="258" y="266" width="170" height="44" rx="7" fill="#faeee3" stroke="#dfb89b" stroke-width="1.2"/>
+      <text x="343" y="286" text-anchor="middle" font-size="13" font-weight="800" fill="#853d16">3.91× Smaller Step</text>
+      <text x="343" y="302" text-anchor="middle" font-size="11" font-weight="600" fill="#a85528">Delays Lossy Compaction</text>
+
+
+      <!-- Right Panel: Lifecycle Prompt-Cache Prefix Alignment (x=485, w=845) -->
+      <rect x="485" y="10" width="845" height="340" rx="12" fill="#f1f7f5" stroke="#a3cbc2" stroke-width="1.6"/>
+      <path d="M 485 22 Q 485 10 497 10 L 1318 10 Q 1330 10 1330 22 L 1330 48 L 485 48 Z" fill="#28665a"/>
+      <text x="907" y="35" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff">
+        2. LIFECYCLE PROMPT-CACHE PREFIX PRESERVATION
+      </text>
+
+      <!-- Visual Prefix-Extension Rows (Showing byte-identical cached prefix across lifecycle!) -->
+      <!-- Row 1: Turn t -->
+      <rect x="505" y="66" width="805" height="54" rx="8" fill="#ffffff" stroke="#8ebdb2" stroke-width="1.5"/>
+      <text x="520" y="98" font-size="13.5" font-weight="800" fill="#1e293b">Normal Turn</text>
+      <rect x="635" y="77" width="220" height="32" rx="5" fill="#dceaf7" stroke="#234e70" stroke-width="1.4"/>
+      <text x="745" y="98" text-anchor="middle" font-size="12" font-weight="800" fill="#183852">Locked: Tools + System</text>
+      <rect x="863" y="77" width="180" height="32" rx="5" fill="#dceee9" stroke="#28665a" stroke-width="1.4"/>
+      <text x="953" y="98" text-anchor="middle" font-size="12" font-weight="800" fill="#20544a">Cached History</text>
+      <rect x="1051" y="77" width="110" height="32" rx="5" fill="#faeee3" stroke="#b85d2e" stroke-width="1.4"/>
+      <text x="1106" y="98" text-anchor="middle" font-size="12" font-weight="800" fill="#853d16">+ New Turn</text>
+      <text x="1235" y="98" text-anchor="middle" font-size="12.5" font-weight="800" fill="#20544a">✔ 100% Hit</text>
+
+      <!-- Row 2: Mid-Run State Edit -->
+      <rect x="505" y="132" width="805" height="54" rx="8" fill="#ffffff" stroke="#8ebdb2" stroke-width="1.5"/>
+      <text x="520" y="164" font-size="13.5" font-weight="800" fill="#1e293b">Mid-Run Edit</text>
+      <rect x="635" y="143" width="220" height="32" rx="5" fill="#dceaf7" stroke="#234e70" stroke-width="1.4"/>
+      <text x="745" y="164" text-anchor="middle" font-size="12" font-weight="800" fill="#183852">Prefix Locked · Edit Deferred</text>
+      <rect x="863" y="143" width="298" height="32" rx="5" fill="#dceee9" stroke="#28665a" stroke-width="1.4"/>
+      <text x="1012" y="164" text-anchor="middle" font-size="11.5" font-weight="800" fill="#20544a">Reloaded When Compaction Opens New Context</text>
+      <text x="1235" y="164" text-anchor="middle" font-size="12.5" font-weight="800" fill="#20544a">✔ No Reset</text>
+
+      <!-- Row 3: Context Compaction -->
+      <rect x="505" y="198" width="805" height="54" rx="8" fill="#ffffff" stroke="#8ebdb2" stroke-width="1.5"/>
+      <text x="520" y="230" font-size="13.5" font-weight="800" fill="#1e293b">Compaction</text>
+      <rect x="635" y="209" width="220" height="32" rx="5" fill="#dceaf7" stroke="#234e70" stroke-width="1.4"/>
+      <text x="745" y="230" text-anchor="middle" font-size="12" font-weight="800" fill="#183852">Same Tools + System + Thinking</text>
+      <rect x="863" y="209" width="180" height="32" rx="5" fill="#dceee9" stroke="#28665a" stroke-width="1.4"/>
+      <text x="953" y="230" text-anchor="middle" font-size="12" font-weight="800" fill="#20544a">Full History Hit</text>
+      <rect x="1051" y="209" width="110" height="32" rx="5" fill="#faeee3" stroke="#b85d2e" stroke-width="1.4"/>
+      <text x="1106" y="230" text-anchor="middle" font-size="12" font-weight="800" fill="#853d16">+ Summarize</text>
+      <text x="1235" y="230" text-anchor="middle" font-size="12.5" font-weight="800" fill="#20544a">✔ 10.2× Saved</text>
+
+      <!-- Row 4: Session Resume & Reconnect -->
+      <rect x="505" y="264" width="805" height="66" rx="8" fill="#ffffff" stroke="#8ebdb2" stroke-width="1.5"/>
+      <text x="520" y="302" font-size="13.5" font-weight="800" fill="#1e293b">Resume</text>
+      <rect x="635" y="276" width="526" height="42" rx="5" fill="#dceee9" stroke="#28665a" stroke-width="1.4"/>
+      <text x="898" y="302" text-anchor="middle" font-size="11.5" font-weight="800" fill="#20544a">
+        Replays Locked Prompt, Signatures &amp; Tool Order · 33 CI Scenarios Verified
+      </text>
+      <text x="1235" y="302" text-anchor="middle" font-size="12.5" font-weight="800" fill="#9c4a1f">99.1% Hit</text>
+    </svg>
+    <div class="caption-box">
+      <strong>Figure 3: On-Demand Context Control and Lifecycle Prompt-Cache Prefix Preservation.</strong>
+      Left: 1-line skill index and 16K output offload reduce context volume; Right: Byte-identical prefix alignment across normal turns, mid-run edits, compaction, and session resume achieves a 99.10% prompt-cache hit rate.
+    </div>
+  </div>
+</div>
+</body>
+</html>

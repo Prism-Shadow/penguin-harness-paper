@@ -1,0 +1,37 @@
+\section{Unified RSI Experiment Organization}
+\label{sec:organization}
+
+\fwname separates RSI methods from evaluation benchmarks to accommodate differences in implementation, task inputs, and scoring. This section describes how methods are packaged as skills and how agents organize the experiment automatically.
+
+\input{tabs/methods}
+
+\subsection{Modular RSI Skills}
+
+An RSI method often comes with a custom training loop that parses tasks, assembles meta-prompts, and updates the agent configuration. In \fwname, each method is represented as a structured skill. The \emph{Super Agent}, which coordinates the experiment, loads the selected skill on demand and follows its procedure.
+
+\paragraph{Controlled state updates.}
+Each skill modifies the prompts or skill library of the same \emph{Target Agent} through a common file interface. The default method can edit the main instruction file and the skill library. OPRO, APE, ACE, and AWM create a dedicated skill file for optimized instructions, rules, or workflow memory and add a fixed reference in the main instruction file. The update loop then edits the dedicated file. SkillAdam, SkillOpt, OpenSkill, and TRACE directly synthesize, prune, and reorganize domain skills in the Target Agent's skill directory. Table~\ref{tab:methods} summarizes the nine built-in methods. The researcher can switch methods on the same benchmark by selecting a different RSI skill.
+
+\subsection{Agent-Orchestrated Automated RSI and Evaluation}
+\label{sec:orchestration}
+
+After the user selects a Target Agent, an RSI skill, and a benchmark, the Super Agent coordinates initialization, training, and held-out testing (Figure~\ref{fig:rsi-workflow}). It loads the selected RSI skill and takes a snapshot of the Target Agent's initial file state \(S_0\). Training then proceeds in rounds over the training split.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figs/fig1-preview.png}
+  \caption{The unified RSI workflow in \fwname. The Super Agent coordinates initialization, training, and held-out testing. The Target Agent runs tasks in Docker and produces a trace and a task result. The Evaluator scores the task result using a private rubric. The selected RSI method uses the trace and score to propose changes to the Target Agent's files. Its selection rule keeps the update or restores the previous state. Held-out tests use the frozen state.}
+  \label{fig:rsi-workflow}
+\end{figure*}
+
+\begin{enumerate}
+  \item \textbf{Rollout.} The Target Agent receives a public task statement, executes the task in an isolated container, and produces an execution trace and a task result.
+  \item \textbf{Scoring.} An Evaluator subagent scores the task result under a private rubric and returns a structured evaluation record to the Super Agent.
+  \item \textbf{Self-improvement.} The selected RSI method uses the execution trace and evaluation score to propose changes to the Target Agent's instructions or skill library. The method specifies which training role produces the update.
+  \item \textbf{State selection.} The RSI method applies its selection rule to keep the proposed file update or restore the previous state.
+\end{enumerate}
+
+When training ends, the Super Agent freezes the selected state \(S^*\) as read-only, dispatches runs on the held-out split, and aggregates the final metrics.
+
+\paragraph{Containerized benchmarks and isolated evaluation.}
+\fwname provides seventeen containerized benchmarks drawn from multiple domains. Each case separates the public task statement from private scoring criteria. To keep private scoring material out of the update loop, the experiment uses the subagent delegation primitive to dispatch an Evaluator, which runs the Target Agent in an isolated environment and scores its execution. The Evaluator's structured response contains a numeric score, duration, cost, and a session identifier. The identifier links the score to its execution trace for diagnosis, while the scoring criteria stay with the Evaluator.

@@ -1,71 +1,11 @@
 \appendix
-\renewcommand{\thetable}{\thesection\arabic{table}}
-\renewcommand{\theHtable}{\thesection.\arabic{table}}
 
 \section{End-to-End Harness Comparison Under a Fixed Model}
 \label{sec:appendix-harness-comparison}
-\setcounter{table}{0}
 
-\paragraph{Experimental setup.}
-We compare \fwname, DeepSeek Harness (dsh), Pi, and Codex on five containerized benchmark subsets: Data Analysis Bench (Sec.~A), DeepSWE v1.1 (Sec.~B), AutomationBench (Sec.~C), Terminal-Bench-Science 0.1 (Sec.~D), and Terminal-Bench 4.0 (Sec.~E). Each harness uses DeepSeek-V4.1-Flash-1017 at the \texttt{max} reasoning setting and runs each task independently three times. We summarize scores, API cost, and prompt-cache hit rates. The design reserves a comparison with Claude Code under the same conditions.
-
-\paragraph{Results.}
-The overall mean scores are 38.00 for \fwname, 38.67 for dsh, 34.00 for Pi, and 30.00 for Codex. \fwname scores 70.00 on both Sec.~A and Sec.~B, including a 16.67-point advantage over Codex on Sec.~B. It has the highest measured cache hit rate at 99.10\%. Its mean input volume is 355 million tokens and its mean API cost is \$4.07 per full 50-task round. The \href{https://github.com/Prism-Shadow/penguin-harness-benchmark/tree/8a507af0329fed8f9a1baf44d1364b438340c78a/experiments/harness-comparison}{run archive} contains the per-subset records. A separate comparison using each harness's default commercial model reported \fwname costs of approximately \(1/70\) of Claude Code's on data analysis and \(1/38\) on coding.
+This protocol compares \fwname, DeepSeek Harness, Pi, and Codex on five containerized benchmark subsets: Data Analysis Bench, DeepSWE v1.1, AutomationBench, Terminal-Bench-Science 0.1, and Terminal-Bench 4.0. Each harness uses DeepSeek-V4.1-Flash-1017 at the \texttt{max} reasoning setting and runs each task independently three times. The evaluation records task scores, API cost, and prompt-cache hit rates.
 
 \section{Context and Cache Microbenchmarks}
 \label{sec:appendix-microbenchmarks}
-\setcounter{table}{0}
 
-We use synthetic workloads and an offline prompt-cache simulator to examine context size (Table~\ref{tab:context-microbenchmarks}) and changes to request prefixes (Table~\ref{tab:cache-microbenchmarks}).
-
-\begin{table*}[htbp]
-  \centering
-  \small
-  \setlength{\tabcolsep}{4pt}
-  \caption{Skill loading and tool output microbenchmarks. Token counts are estimates.}
-  \label{tab:context-microbenchmarks}
-  \begin{tabular}{@{}p{.13\textwidth}p{.24\textwidth}p{.23\textwidth}p{.30\textwidth}@{}}
-    \toprule
-    \textbf{Mechanism} & \textbf{Control} & \textbf{\fwname design} & \textbf{Measurement} \\
-    \midrule
-    Skill loading &
-    Full skill bodies: 124,826 tokens &
-    Skill index: 2,843 tokens &
-    Initial skill context is \(1/43.9\) of the full-body condition. \\
-    Tool output &
-    Full inline 64\,KB log: 16,297 tokens per read &
-    16,000-character cap: 4,163 tokens per read &
-    Full output triggers compaction at read 12. The capped run stays below the threshold for all 16 reads. \\
-    \bottomrule
-  \end{tabular}
-\end{table*}
-
-The skill comparison uses 35 built-in skills. Loading the reference documents along with the skill bodies increases the estimate to 183,403 tokens. The tool-output tests use a scripted model and estimate token counts from text length. See the \href{https://github.com/Prism-Shadow/penguin-harness/blob/8c95d6b90/packages/landing/content/blog/context-slope.en.md}{context microbenchmark record}.
-
-\begin{table*}[htbp]
-  \centering
-  \small
-  \setlength{\tabcolsep}{4pt}
-  \caption{Offline microbenchmarks for cache reuse across the session lifecycle.}
-  \label{tab:cache-microbenchmarks}
-  \begin{tabular}{@{}p{.13\textwidth}p{.24\textwidth}p{.23\textwidth}p{.30\textwidth}@{}}
-    \toprule
-    \textbf{Mechanism} & \textbf{Control} & \textbf{\fwname design} & \textbf{Current evidence} \\
-    \midrule
-    State updates &
-    Rebuild the active context immediately &
-    Load changes at the next context boundary &
-    The active segment retains its prefix. Paired cache-read counts are pending. \\
-    Compaction &
-    Change the request configuration &
-    Keep the original configuration &
-    Single-request estimated cost is \$0.008715 with drift and \$0.000858 with reuse, a \(10.2\times\) difference. \\
-    Resumption &
-    Resume with a changed request prefix &
-    Replay history from the original trace &
-    Tests check replay consistency. Paired cache-read counts are pending. \\
-    \bottomrule
-  \end{tabular}
-\end{table*}
-
-The compaction cost estimates concern a single request with a five-task gap between the configuration change and compaction. See the \href{https://github.com/Prism-Shadow/penguin-harness/blob/8c95d6b90/packages/landing/content/blog/testing-agent-harnesses.en.md}{compaction cost estimates} and \href{https://github.com/Prism-Shadow/penguin-harness/blob/8c95d6b90/packages/core/test/prompt-cache-lifecycle.test.ts#L431}{resumption test}.
+The context microbenchmarks compare the token counts of a skill index and full skill bodies. For tool output, they use a synthetic long log to measure how much text enters the context with and without the configured output limit. The prompt-cache microbenchmarks use an offline simulator to compare request prefixes after state updates, compaction, and resumption.

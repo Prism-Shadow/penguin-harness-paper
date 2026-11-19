@@ -27,9 +27,9 @@ Tool names, descriptions, and parameter schemas recur in model requests. Large s
 The inference cost of long sessions and repeated RSI experiments depends on both the amount of context sent on each turn and the fraction of prompt tokens that can be read from cache. Context includes the system prompt, tool definitions, and accumulated history. Model providers can charge a lower rate for reading a cached prefix that matches the current request. \fwname limits the context sent to the model and reuses request prefixes across the session lifecycle.
 
 \paragraph{On-demand context loading.}
-The system prompt includes only the name and a short trigger description for each installed skill. The agent reads a skill's full instructions from disk when it needs them. For the 35 built-in skills measured in the draft experiments, the index takes 2,843 tokens, compared with 124,826 tokens for the full skill bodies, a factor of \(43.9\times\).
+The system prompt includes only the name and a short trigger description for each installed skill. The agent reads a skill's full instructions from disk when it needs them.
 
-The harness also caps the text returned to the context by a single tool call at 16,000 characters by default. For a long command output, it retains the beginning and end, the exit code, and the path to the complete output on disk. The agent can recover intervening details through file reads or search. In the 64\,KB log example, this reduces the per-call context growth from 16,297 to 4,163 tokens, a factor of \(3.91\times\), delaying the point at which lossy compaction is triggered.
+The harness also caps the text returned to the context by a single tool call at 16,000 characters by default. For a long command output, it retains the beginning and end, the exit code, and the path to the complete output on disk. The agent can recover intervening details through file reads or search.
 
 \paragraph{Prompt caching across the session lifecycle.}
 At the start of each context segment, \fwname assembles the system prompt and tool definitions. Subsequent turns append messages to the history. Changes written to the agent's files during a segment are loaded at the start of the next segment. When the context reaches its compaction threshold, the summary request reuses the current system prompt, tools, and history and appends a summarization instruction. The next segment loads the updated state and continues from the summary.
@@ -43,7 +43,7 @@ At the start of each context segment, \fwname assembles the system prompt and to
 
 When resuming a session with an open context, the engine restores the original system prompt and committed history from the trace, preserves model reasoning signatures, and replays tool outputs in their original order. After an interruption, new input is appended to the committed history. Figure~\ref{fig:prompt-cache} illustrates compaction and resumption.
 
-In the offline comparison with a five-task gap between the configuration change and compaction, the estimated compaction cost after a configuration change was \(10.2\times\) the cost with the original configuration (Appendix~\ref{sec:appendix-microbenchmarks}). Continuous integration checks the requests produced by the engine with an offline prompt-cache simulator across 33 session-lifecycle scenarios.
+Continuous integration checks the requests produced by the engine with an offline prompt-cache simulator across session-lifecycle scenarios.
 
 \subsection{Pluggable Plugin System}
 \label{sec:plugins}

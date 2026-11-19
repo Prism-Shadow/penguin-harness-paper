@@ -1,40 +1,18 @@
-\section{Empirical Study}
+\section{Evaluation Protocol}
 \label{sec:experiments}
 
-We conduct two studies. The first compares RSI methods on held-out tasks from six GDPEVO Essential domains under a common harness. The second compares RSI gains in \fwname and Codex on the same held-out tasks and reports cache reuse on those runs. Appendix~\ref{sec:appendix-microbenchmarks} provides offline microbenchmarks of context management and prefix reuse.
+We define two studies on GDPEVO Essential. The first compares RSI methods within \fwname. The second compares RSI gains and prompt-cache reuse across harnesses.
 
 \subsection{Experiment 1: Cross-Method and Cross-Benchmark RSI Evaluation}
 \label{sec:experiment-rsi}
 
-\paragraph{Experimental setup.}
-We evaluate methods on the six professional domains in GDPEVO Essential: Court Clerk Operations, Coverage Review, Engineering Portfolio Analysis, Financial Control, Investment Portfolio Management, and Service Ticket Resolution. Each domain has five consecutive training tasks that share a container and session, with a six-hour limit. Its held-out test set contains five tasks, each run in a fresh container and session with a four-hour limit.
+GDPEVO Essential comprises six professional domains: Court Clerk Operations, Coverage Review, Engineering Portfolio Analysis, Financial Control, Investment Portfolio Management, and Service Ticket Resolution. Each domain has five consecutive training tasks that share a container and session, with a six-hour limit. Its held-out test set contains five tasks, each run in a fresh container and session with a four-hour limit.
 
-We fix the base model to DeepSeek-V4.1-Flash-1017 at the \texttt{max} reasoning setting. We compare the unmodified baseline with four RSI methods: OpenSkill, TRACE, SkillAdam, and SkillOpt. A Super Agent independently orchestrates each method as described in Section~\ref{sec:orchestration}. Each frozen state is evaluated on the entire test set in three repetitions. We compute the overall score by weighting the six domains equally within each round and taking the mean and sample standard deviation across the three rounds. Test cost is averaged over the three complete 30-task rounds. The cache hit rate is the ratio of cached input tokens to all input tokens across the runs.
-
-\input{tabs/eval_rsi}
-
-\paragraph{Results and analysis.}
-The six-domain average rises from 56.32 for the baseline to between 62.16 and 70.25 for the four RSI methods (Table~\ref{tab:cross-method-results}). SkillOpt has the highest overall mean, 70.25, a gain of 13.93 points. It leads on Court Clerk Operations (61.98), Investment Portfolio Management (77.40), and Service Ticket Resolution (69.95). SkillAdam leads on Coverage Review (80.67) and Financial Control (63.89). TRACE leads on Engineering Portfolio Analysis (91.52), while scoring 51.43 on Court Clerk Operations compared with 52.60 for the baseline. The rankings vary across domains.
-
-The modular skills allow experiments to switch methods and domains without changing harness code or writing an external control script. Runs use the same tool interface, sandbox environment, and private scoring protocol.
-
-Several improved agents also cost less to test. The average cost per complete test round is \$1.59 for TRACE, \$1.86 for SkillOpt, and \$1.96 for SkillAdam, compared with \$2.38 for the baseline. Cache hit rates exceed 97.4\% across these runs. The \href{https://github.com/Prism-Shadow/penguin-harness-benchmark/tree/8a507af0329fed8f9a1baf44d1364b438340c78a/experiments/gdpevo-essential}{experiment records} contain the per-domain scores and usage.
+We fix the base model to DeepSeek-V4.1-Flash-1017 at the \texttt{max} reasoning setting. The comparison includes a no-skill baseline and four RSI methods: OpenSkill, TRACE, SkillAdam, and SkillOpt. A Super Agent orchestrates each run as described in Section~\ref{sec:orchestration}. After training, we freeze each learned skill and evaluate it on the entire test set in three independent repetitions. For the overall score, we weight the six domains equally within each repetition and report the mean and sample standard deviation across the three repetitions.
 
 \subsection{Experiment 2: Cross-Harness RSI Gains and Prompt-Cache Reuse}
 \label{sec:experiment-harness}
 
-\paragraph{RSI gains across harnesses.}
-We ask how much improvement each RSI method yields when implemented in a different harness. We compare the four methods in \fwname with their Codex CLI adaptations on the same six GDPEVO Essential domains and held-out tasks as in Section~\ref{sec:experiment-rsi}. Each harness has its own unmodified baseline. For each baseline and frozen method configuration, we run five held-out tasks per domain over three rounds, yielding 90 task attempts. We measure improvement in points relative to the baseline in the same harness.
+The cross-harness protocol compares SkillOpt and SkillAdam across \fwname, Codex CLI, Claude Code, DeepSeek Harness, and Pi. Each harness runs its own no-skill baseline and uses the same base model, reasoning setting, training and test tasks, and benchmark scorers. For each RSI method, the training budget and candidate acceptance rule are fixed across harnesses. We measure held-out score gains in points relative to the baseline in the same harness.
 
-\input{tabs/eval_rsi_harness}
-
-The baseline is \(56.32 \pm 2.17\) for \fwname and \(57.18 \pm 1.47\) for Codex. Gains in Table~\ref{tab:cross-harness-rsi} use the unrounded overall means. All four methods improve over their respective baselines, with gains of 5.83--13.93 points in \fwname and 1.91--3.43 points in Codex. The ordering also changes. SkillOpt yields the largest gain in \fwname and the smallest in Codex, where SkillAdam leads.
-
-The Codex experiment uses CLI version 0.169.0 with the DeepSeek Flash API alias at the \texttt{max} reasoning setting. Provider and context settings vary across some Codex runs. The differences in Table~\ref{tab:cross-harness-rsi} therefore describe the methods as implemented and run in the two environments. The \href{https://github.com/Prism-Shadow/penguin-harness-benchmark/pull/29}{Codex experiment report} documents these deviations.
-
-\paragraph{Cache reuse in held-out RSI tests.}
-We use the same runs to characterize prompt-cache reuse when evaluating frozen agent states. For each configuration, we sum cached input tokens across all three rounds and divide by the corresponding total input tokens. Table~\ref{tab:rsi-holdout-cache} reports hit rates of 97.42\%--98.24\% in \fwname, higher than the matching Codex records under the tested configurations.
-
-High reuse is already present in the \fwname baseline at 97.80\%. For example, TRACE raises the held-out score by 11.69 points while the hit rate falls to 97.42\%. The score and cache metrics capture different outcomes of the same runs. Cache measurements concern the frozen-state test stage, and Appendix~\ref{sec:appendix-microbenchmarks} separately examines mechanisms that preserve the request prefix.
-
-\input{tabs/eval_cache}
+For each test attempt, we record the score, total input tokens, cached input tokens, output tokens, and agent execution time. We compute the cache hit rate by dividing the sum of cached input tokens by the sum of all input tokens across the three repetitions. A complete test repetition covers 30 tasks. We report test cost per repetition and account for training usage separately.

@@ -11,5 +11,5 @@ We introduce \fwname, a unified framework for agent self-improvement and evaluat
 Our contributions are as follows.
 \begin{itemize}
   \item \textbf{A unified RSI experiment framework.} \fwname packages nine representative RSI methods as modular skills and decouples them from seventeen containerized benchmarks. An agent orchestrates the loop from baseline evaluation and failure analysis through state updates and rollback. Methods can be compared across benchmarks under a shared protocol without rewriting external training code.
-  \item \textbf{An efficient general-purpose harness for RSI.} A minimal file-centric design lets agents refine their behavior through local file edits. On-demand context loading and lifecycle-aware prompt caching reduce the cost of repeated execution and evaluation. Across the reported long-horizon evaluations, prompt-cache hit rates range from above 97\% to above 99\%.
+  \item \textbf{An efficient general-purpose harness for RSI.} A minimal file-centric design lets agents refine their behavior through local file edits. On-demand context loading limits how much material enters the prompt, and lifecycle-aware prompt caching preserves reusable request prefixes during repeated execution and evaluation.
 \end{itemize}

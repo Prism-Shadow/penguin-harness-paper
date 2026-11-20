@@ -16,3 +16,13 @@ We fix the base model to DeepSeek-V4.1-Flash-1017 at the \texttt{max} reasoning 
 The cross-harness protocol compares SkillOpt and SkillAdam across \fwname, Codex CLI, Claude Code, DeepSeek Harness, and Pi. Each harness runs its own no-skill baseline and uses the same base model, reasoning setting, training and test tasks, and benchmark scorers. For each RSI method, the training budget and candidate acceptance rule are fixed across harnesses. We measure held-out score gains in points relative to the baseline in the same harness.
 
 For each test attempt, we record the score, total input tokens, cached input tokens, output tokens, and agent execution time. We compute the cache hit rate by dividing the sum of cached input tokens by the sum of all input tokens across the three repetitions. A complete test repetition covers 30 tasks. We report test cost per repetition and account for training usage separately.
+
+\subsection{Experiment 3: Safety Preservation and Persistent Risks in Self-Improvement}
+Iterative training in RSI may introduce safety risks. Prior studies have shown that self-evolving agents can exhibit unintended behavioral degradation, termed misevolution, and that experience accumulation may undermine safety even when the underlying model remains fixed~\citep{shao2026your, zhao-etal-2026-safety}. Safety failures may also persist across successive self-improvement iterations~\citep{zhang2026safetysurvive}. Furthermore, untrusted training trajectories can be incorporated into persistent skills, potentially propagating unsafe behaviors to subsequent tasks~\citep{mao2026practice, ying2026skilljack, chen2026experience}.
+To systematically investigate safety risks in RSI processes supported by \fwname, we formulate three research questions:
+
+RQ1: Safety Preservation. To what extent do agents preserve their original safety constraints and authorization boundaries throughout iterative self-improvement?
+
+RQ2: Persistent Skill Contamination. Can untrusted training experiences be incorporated into persistent skills through RSI, leading to unsafe behaviors that persist across subsequent tasks?
+
+RQ3: Cross-Method Safety Comparison. Under a unified evaluation protocol, do different RSI methods exhibit varying degrees of safety degradation and persistent skill contamination?
